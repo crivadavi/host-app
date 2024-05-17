@@ -1,6 +1,7 @@
 import { Injectable, Injector, isDevMode } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -10,32 +11,31 @@ export class EnvironmentService {
 
   webSocketUrl: string = '';
   restServiceUrl: string = '';
+  microfrontendList = {
+    "mflist": []
+  };
 
-  constructor(private injector: Injector) { }
+  constructor(private http: HttpClient) { }
 
   loadEnvironment() {
-    let http = this.injector.get(HttpClient);
-    
-    if(isDevMode()) {
-      this.restServiceUrl = environment.restServiceUrl;
-      environment
-    } else {
-
-      http.get<configData>('/config.json').subscribe(data => {
-        console.log(data);
-        this.webSocketUrl = 'ws://' + data.host + '/api/';
-        this.restServiceUrl = 'http://' + data.host + '/api/';
-      }, err => {
-        console.log('Errore durante il prelevamento del file config.json');
-        this.restServiceUrl = environment.restServiceUrl;
-      });
-      
-    }
-
+    this.setMicrofrontendList();
   }
-}
 
-export interface configData {
-  host: string,
-  port: string
+  setMicrofrontendList() {
+    // return this.http.post<any>(this.environment.restServiceUrl + 'microfrontendList', httpOptions);
+
+    this.http.get<any>('/assets/data/microfrontendList.json').subscribe({
+      next: (response) => {
+        this.microfrontendList = response;
+      },
+      error: (err) => {
+        console.log('errore durante il prelevamento dei microfrontend');
+      }
+    });
+  }
+
+  getMicrofrontendList(): any[] {
+    return this.microfrontendList?.['mflist'];
+  }
+
 }

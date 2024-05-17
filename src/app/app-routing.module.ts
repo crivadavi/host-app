@@ -3,22 +3,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: "",
-    redirectTo: "/counterApp",
-    pathMatch: "full"
+  { 
+    path: '',
+    loadChildren: () => import('./modules/container/container.module').then(m => m.ContainerModule)
   },
-  {
-    path: "counterApp",
-    loadChildren:() => {
-      return loadRemoteModule({
-        remoteEntry: "http://localhost:4201/remoteEntry.js",
-        remoteName: "remoteApp",
-        exposedModule: "./CounterModule"
-      }).then(m => m.CounterModule).catch(err => console.log(err));
-    }
-  }
+  { 
+    path: '**', 
+    redirectTo: '/', 
+    pathMatch: 'full'
+  } 
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

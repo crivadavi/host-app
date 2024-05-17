@@ -49,9 +49,9 @@ module.exports = {
         // },      
         
         // For hosts (please adjust)
-        remotes: {
-          "remoteApp": "http://localhost:4201/remoteEntry.js"
-        },
+        // remotes: {
+        //   "remoteApp": "http://localhost:4201/remoteEntry.js"
+        // },
         
         shared: share({
           "@angular/core": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
