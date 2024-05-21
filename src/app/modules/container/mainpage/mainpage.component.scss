@@ -1,0 +1,13 @@
+.Btn {
+    padding: 10px 20px;
+    margin: 0 10px;
+    border: 1px solid darkblue;
+    color: darkblue;
+    background-color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+        background-color: darkblue;
+        color: #fff;
+    }
+}

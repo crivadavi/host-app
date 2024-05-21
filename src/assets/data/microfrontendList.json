@@ -2,10 +2,10 @@
 	"mflist" : [
 		{
 			"baseUrl": "counterApp", 
-			"moduleName": "CounterModule", 
 			"remoteEntry": "http://localhost:4201/remoteEntry.js", 
 			"remoteName": "remoteApp", 
-			"exposedModule": "./CounterModule"
+			"moduleName": "ContainerModule", 
+			"exposedModule": "./ContainerModule"
 		}
 	  ]
 }

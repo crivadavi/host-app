@@ -8,7 +8,7 @@ export const mfInitializerFn = (envService: EnvironmentService) => {
   const microFrontends = envService.getMicrofrontendList();
 
   const routes: Routes = [
-    { path: '', redirectTo: '/counterApp', pathMatch: 'full' },
+    // { path: '', redirectTo: '/counterApp', pathMatch: 'full' },
     { 
       path: '', 
       component: MainpageComponent,
