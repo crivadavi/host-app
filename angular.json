@@ -36,6 +36,7 @@
 				"build": {
 					"builder": "ngx-build-plus:browser",
 					"options": {
+						"baseHref": "./",
 						"outputPath": "dist/host-app",
 						"index": "src/index.html",
 						"polyfills": [
@@ -79,15 +80,10 @@
 							"extraWebpackConfig": "webpack.prod.config.js"
 						},
 						"development": {
+							"baseHref": "/",
 							"optimization": false,
 							"extractLicenses": false,
-							"sourceMap": true,
-							"fileReplacements": [
-								{
-								"replace": "src/environments/environment.ts",
-								"with": "src/environments/environment.development.ts"
-								}
-							]
+							"sourceMap": true
 						}
 					},
 					"defaultConfiguration": "production"

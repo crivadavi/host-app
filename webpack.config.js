@@ -45,7 +45,7 @@ module.exports = {
         // name: "remoteApp",
         // filename: "remoteEntry.js",
         // exposes: {
-        //   './CounterModule': './src/app/counter/counter.module.ts',
+        //   './ContainerModule': './src/app/modules/container/container.module.ts',
         // },      
         
         // For hosts (please adjust)
